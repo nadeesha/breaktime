@@ -25,8 +25,8 @@ if (timeDefined) {
 
 function printHelp () {
 	console.log([app.name, app.version, '\n'].join(' '));
-    console.log('usage:   node-breaktime [amount timeunit]');
-    console.log('example: node-breaktime 45 minutes \n');
+    console.log('usage:   breaktime [amount timeunit]');
+    console.log('example: breaktime 45 minutes \n');
     console.log('NOTE: In absence of defined time, \nbreaktime will default to 45 minutes');
 }
 
