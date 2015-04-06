@@ -7,16 +7,15 @@ var moment = require('moment');
 var _ = require('lodash');
 var app = require('./package');
 
-var interval;
+var interval, args = process.argv;
+var timeDefined = args.length === 4 && _.isNumber(Number(args[2]));
+var helpRequired = args.length === 3 && args[2] === '--help';
 
-// clear screen
-
-
-if (process.argv.length === 4 && _.isNumber(Number(process.argv[2]))) {
+if (timeDefined) {
 	exec('clear');
-    var finishingAt = moment().add(Number(process.argv[2]), process.argv[3]);
+    var finishingAt = moment().add(Number(args[2]), args[3]);
     startTimer(finishingAt);
-} else if (process.argv.length === 3 && process.argv[2] === '--help') {
+} else if (helpRequired) {
 	printHelp();
 } else {
 	exec('clear');
@@ -25,11 +24,10 @@ if (process.argv.length === 4 && _.isNumber(Number(process.argv[2]))) {
 }
 
 function printHelp () {
-	console.log([app.name, app.version].join(' '));
-    console.log('usage: breaktime [units timeunit]');
-    console.log('example: breaktime 45 minutes \n');
-    console.log('NOTE: In absence of defined time,');
-    console.log('      breaktime will default to 45 minutes');
+	console.log([app.name, app.version, '\n'].join(' '));
+    console.log('usage:   node-breaktime [amount timeunit]');
+    console.log('example: node-breaktime 45 minutes \n');
+    console.log('NOTE: In absence of defined time, \nbreaktime will default to 45 minutes');
 }
 
 function lockScreen() {
@@ -51,5 +49,3 @@ function startTimer(endtime) {
         }
     }, 1000);
 }
-
-// while true; do echo -ne "`date`\r"; done
