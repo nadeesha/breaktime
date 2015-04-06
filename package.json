@@ -1,20 +1,28 @@
 {
-  "name": "breaktime",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "bin": {
-    "breaktime": "./index.js"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "asciimo": "^0.3.1",
-    "lodash": "^3.6.0",
-    "moment": "^2.9.0",
-    "shelljs": "^0.4.0"
-  }
+    "name": "breaktime",
+    "version": "0.0.1",
+    "description": "Lock your screen based on a timer.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "breaktime": "./index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ncthis/breaktime.git"
+    },
+    "author": "Nadeesha Cabral",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ncthis/breaktime/issues"
+    },
+    "homepage": "https://github.com/ncthis/breaktime",
+    "dependencies": {
+        "asciimo": "^0.3.1",
+        "lodash": "^3.6.0",
+        "moment": "^2.9.0",
+        "shelljs": "^0.4.0"
+    }
 }
