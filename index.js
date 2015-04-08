@@ -37,7 +37,7 @@ function printHelp() {
 }
 
 function lockScreen() {
-    exec('say "Locking your screen in 5 seconds"');
+    exec('say -v Daniel "5 seconds to break time"');
 
     setTimeout(function () {
         exec('"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend');
