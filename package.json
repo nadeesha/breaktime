@@ -1,6 +1,6 @@
 {
     "name": "breaktime",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Lock your screen based on a timer.",
     "main": "index.js",
     "scripts": {
