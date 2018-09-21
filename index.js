@@ -3,6 +3,7 @@
 'use strict';
 
 require('shelljs/global');
+const os = require('os');
 var moment = require('moment');
 var _ = require('lodash');
 var app = require('./package');
@@ -37,11 +38,24 @@ function printHelp() {
 }
 
 function lockScreen() {
-    exec('say -v Daniel "5 seconds to break time"');
+    // Windows
+    if (os.platform() == 'win32') {
+      setTimeout(function () {
+          exec('rundll32.exe user32.dll,LockWorkStation');
+      }, 5000);
+    } else {
+      // macOS
 
-    setTimeout(function () {
-        exec('"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend');
-    }, 5000);
+      /*
+      if (flag is set to 'say') {
+        exec('say -v Daniel "5 seconds to break time"');
+      }
+      */
+
+      setTimeout(function () {
+          exec('"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend');
+      }, 5000);
+    }
 }
 
 function startTimer(endtime) {
