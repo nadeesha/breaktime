@@ -3,9 +3,9 @@
 'use strict';
 
 require('shelljs/global');
-var moment = require('moment');
-var _ = require('lodash');
-var app = require('./package');
+const moment = require('moment');
+const _ = require('lodash');
+const app = require('./package');
 
 var interval, args = process.argv;
 var timeDefined = args.length === 4 && _.isNumber(Number(args[2]));
@@ -45,7 +45,7 @@ function lockScreen() {
 }
 
 function startTimer(endtime) {
-    console.log('I will lock your screen when the timer runs out');
+    console.log('Breaktime | Screen will be locked in...');
     console.log('-----------------------------------------------');
     interval = setInterval(function() {
         var minutesToGo = endtime.diff(moment(), 'minutes').toString();
