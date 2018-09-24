@@ -11,14 +11,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/ncthis/breaktime.git"
+        "url": "https://github.com/nadeesha/breaktime.git"
     },
     "author": "Nadeesha Cabral",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ncthis/breaktime/issues"
+        "url": "https://github.com/nadeesha/breaktime/issues"
     },
-    "homepage": "https://github.com/ncthis/breaktime",
+    "homepage": "https://github.com/nadeesha/breaktime",
     "dependencies": {
         "asciimo": "^0.3.1",
         "lodash": "^3.6.0",
