@@ -59,6 +59,7 @@ function lockScreen() {
   } else {
     console.log("Sorry, your operating system isn't supported yet :(");
     console.log("Feel free to submit an issue or a pull request on GitHub.");
+    console.log("https://github.com/nadeesha/breaktime");
   }
 }
 
