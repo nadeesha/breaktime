@@ -8,19 +8,17 @@ Breaktime is a CLI app inspired by [Breaktime](http://breaktimeapp.com/). The ap
 
 ## Usage
 
-`breaktime [amount unit]`
+`breaktime [amount unit] [-say]`
 
-Running `breaktime` on your console will give you the default timer of 45 minutes.
+Running `breaktime` on your console will give you the default timer of 45 minutes. To set a custom timer, simply type it out after `breaktime`: e.g. `breaktime 20 minutes`. The app uses moment to parse the time, so most formats are supported.
 
-To set a custom timer, simply type it out after `breaktime`: e.g. `breaktime 20 minutes`
-
-The app uses moment to parse the time, so most formats are supported.
+The `-say` option will tell you when there are 5 seconds remaining using the built-in text-to-speech of your device.
 
 ## Examples
 
 ```sh
 breaktime 45 minutes
-breaktime 2 hours
+breaktime 2 hours -say
 breaktime 10 seconds
 ```
 
