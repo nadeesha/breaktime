@@ -23,15 +23,15 @@ if (timeDefined) {
     if (finishingAt.isBefore(fiveSecondsLater)) {
         console.log('I think you gave me an invalid timeframe there...');
     } else {
-        exec('clear');
+        clear();
         startTimer(finishingAt);
     }
 } else if (helpRequired) {
     printHelp();
 } else {
-    exec('clear');
-    var finishingAt = moment().add(45, 'minutes');
-    startTimer(finishingAt);
+  clear();
+  var finishingAt = moment().add(45, 'minutes');
+  startTimer(finishingAt);
 }
 
 function printHelp() {
@@ -39,6 +39,15 @@ function printHelp() {
     console.log('usage:   breaktime [amount timeunit]');
     console.log('example: breaktime 45 minutes \n');
     console.log('NOTE: In absence of defined time, \nbreaktime will default to 45 minutes');
+}
+
+// clear the console
+function clear() {
+  if (os.platform() == 'win32') {
+    exec('cls');
+  } else {
+    exec('clear');
+  }
 }
 
 function lockScreen() {
@@ -63,7 +72,7 @@ function lockScreen() {
 }
 
 function startTimer(endtime) {
-    console.log('Breaktime | Screen will be locked in...');
+    console.log('Breaktime | Take breaks.');
     console.log('-----------------------------------------------');
     interval = setInterval(function() {
         var minutesToGo = endtime.diff(moment(), 'minutes').toString();
