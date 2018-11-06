@@ -4,10 +4,10 @@
 
 require('shelljs/global');
 
-const os = require('os'); // access the operating system type
-const say = require('say'); // a module for text-to-speech
-const moment = require('moment'); // a module for date/time management
-const _ = require('lodash'); // a module for utilities
+const os = require('os');
+const say = require('say');
+const moment = require('moment');
+const _ = require('lodash');
 
 const app = require('./package');
 
