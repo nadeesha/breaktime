@@ -2,17 +2,16 @@
 
 'use strict';
 
-require('shelljs/global');
-
 const os = require('os');
 const say = require('say');
 const moment = require('moment');
-const _ = require('lodash');
+const clear = require('clear');
+const shell = require('shelljs');
 
 const app = require('./package');
 
 var interval, args = process.argv;
-var timeDefined = args.length >= 4 && _.isNumber(Number(args[2]));
+var timeDefined = args.length >= 4 && Number.isInteger(Number(args[2]));
 var helpRequired = args.length === 3 && args[2] === '--help';
 const sayFlag = args[4] == '-say' ? true : false;
 
@@ -23,13 +22,11 @@ if (timeDefined) {
     if (finishingAt.isBefore(fiveSecondsLater)) {
         console.log('I think you gave me an invalid timeframe there...');
     } else {
-        clear();
         startTimer(finishingAt);
     }
 } else if (helpRequired) {
     printHelp();
 } else {
-  clear();
   var finishingAt = moment().add(45, 'minutes');
   startTimer(finishingAt);
 }
@@ -41,29 +38,19 @@ function printHelp() {
     console.log('NOTE: In absence of defined time, \nbreaktime will default to 45 minutes');
 }
 
-// clear the console
-function clear() {
-  if (os.platform() == 'win32') {
-    exec('cls');
-  } else {
-    exec('clear');
-  }
-}
-
 function lockScreen() {
   if (sayFlag) {
     say.speak('5 seconds to break time.');
   }
-
   if (os.platform() == 'win32') {
     // Windows
   	setTimeout(function() {
-  		exec('rundll32.exe user32.dll,LockWorkStation');
+  		shell.exec('rundll32.exe user32.dll,LockWorkStation');
   	}, 5000);
   } else if (os.platform() == 'darwin') {
   	// macOS
   	setTimeout(function() {
-  		exec('"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend');
+  		shell.exec('"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend');
   	}, 5000);
   } else {
     console.log("Sorry, your operating system isn't supported yet :(");
@@ -72,13 +59,24 @@ function lockScreen() {
   }
 }
 
+// clear the console
+function clearWindow() {
+  if (os.platform() == 'win32') {
+    shell.exec('cls');
+  } else {
+    shell.exec('clear');
+  }
+}
+
 function startTimer(endtime) {
+    clearWindow();
     console.log('Breaktime | Take breaks.');
     console.log('-----------------------------------------------');
     interval = setInterval(function() {
         var minutesToGo = endtime.diff(moment(), 'minutes').toString();
         var secondsToGo = (endtime.diff(moment(), 'seconds') % 60).toString();
-        var timeToGo = minutesToGo + ':' + secondsToGo + ' to go';
+        let secondZero = secondsToGo < 10 ? '0' : '';
+        var timeToGo = minutesToGo + ':' + secondZero + secondsToGo + ' to go';
         process.stdout.clearLine();
         process.stdout.cursorTo(0);
         process.stdout.write(timeToGo);
